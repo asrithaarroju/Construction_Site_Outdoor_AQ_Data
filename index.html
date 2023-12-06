@@ -107,19 +107,14 @@
                     const trace_temperature = { x: timestamps, y: temperature, name: 'Temperature(°C)', type: 'line' };
                     const trace_humidity = { x: timestamps, y: humidity, name: 'Humidity(%)', type: 'line' };
 
-                    // Calculate y-axis range based on the maximum and minimum values across all channels
-                    const minY = 0;
-                    const maxY = Math.max(25, ...pm25, ...pm10, ...temperature, ...humidity);
-                    const yRange = [minY, maxY];
-
                     // Create layout for the plot
                     const layout = {
                         title: `Outdoor Air Quality Data - ${location}`,
                         xaxis: { title: 'Timestamp', type: 'category' },
-                        yaxis: { title: 'Values', range: yRange, tick0: 0, dtick: 25 },
+                        yaxis: { title: 'Values', range: [0, 250], tick0: 0, dtick: 25 },
                         showlegend: true,
-                        height: 750, // Increased height
-                        width: 1250, // Increased width
+                        height: 750,
+                        width: 1250,
                         xaxis: { rangeslider: { visible: true } }
                     };
 
